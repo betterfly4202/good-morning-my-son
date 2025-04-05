@@ -5,4 +5,7 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'goodmorning'
+
+include('batch')
+
+rootProject.name = 'good-morning-my-son'
