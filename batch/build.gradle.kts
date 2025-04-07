@@ -14,11 +14,16 @@ java {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+
+    runtimeOnly("com.h2database:h2")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.bootJar {
@@ -27,7 +32,9 @@ tasks.bootJar {
 tasks.jar {
     enabled = false
 }
-
+tasks.test {
+    useJUnitPlatform()
+}
 springBoot {
     mainClass.set("com.goodmorning.batch.BatchApplication")
 }

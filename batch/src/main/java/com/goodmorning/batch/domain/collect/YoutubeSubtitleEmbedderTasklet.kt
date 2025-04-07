@@ -13,7 +13,7 @@ class YoutubeSubtitleEmbedderTasklet(
     private val qdrantClient: QdrantClient,
 ) : Tasklet {
     override fun execute(contribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        val channelId = "UCxE..."  // 채널 ID 고정 or config로 분리 가능
+        val channelId = "UCgFupN0s5eAxvvgAFgvriRA"
 
         val videoIds = youtubeApiClient.fetchAllVideoIds(channelId)
 
