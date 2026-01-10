@@ -21,9 +21,12 @@
 ```
 
 ### Plan Mode (Shift+Tab 2번)
-- 새 기능/변경 시작 전 Plan Mode 진입
-- spec 확정 후 구현 시작
-- spec 위치: `.claude/features/{feature}/spec.md`
+1. 새 기능/변경 시작 전 Plan Mode 진입
+2. 요구사항 논의 및 계획 수립
+3. 합의된 내용을 `spec.md`로 저장 (히스토리 기록)
+4. spec 확정 후 구현 시작
+
+spec 위치: `.claude/features/{feature}/spec.md`
 
 ### Implement → Review → Fix
 - `/implement` - 구현 수행
