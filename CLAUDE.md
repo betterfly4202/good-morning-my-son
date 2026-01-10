@@ -1,39 +1,45 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## 프로젝트
+**Good Morning My Son** - 육아 유튜버 콘텐츠 기반 RAG 엔진
 
----
+## 핵심 규칙
+1. **문서가 진실** - 추측하지 말고, 문서에 근거하라
+2. **Plan 먼저** - 코딩 전에 Plan Mode로 계획 확정
+3. **검증 필수** - 구현 후 반드시 테스트/검증
+4. **모르면 질문** - 불확실하면 멈추고 물어보라
 
-## 프로젝트 개요
+## 기술 스택
+- Kotlin + Spring Boot 3.x
+- PostgreSQL + pgvector
+- OpenAI Embeddings
 
-**Good Morning My Son** - 특정 육아 유튜버의 콘텐츠만을 기반으로 답변하는 RAG 엔진
+## 주요 명령어
+```bash
+./gradlew build          # 빌드
+./gradlew test           # 테스트
+./gradlew bootRun        # 실행
+```
 
-> "AI가 똑똑해 보이는 것보다, 정직하게 모른다고 말하는 것이 더 중요하다"
+## Slash Commands
+- `/implement` - 구현 워크플로우
+- `/review` - 코드 리뷰
+- `/commit` - 커밋 생성
 
----
+## 디렉토리 구조
+```
+src/main/kotlin/com/goodmorning/
+├── subtitle/     # 자막 수집/파싱
+├── embedding/    # 임베딩 생성
+├── vectordb/     # 벡터 저장소
+└── rag/          # RAG 파이프라인
+```
 
-## 상세 문서 (`.claude/`)
+## 상세 문서
+- `.claude/architecture.md` - 전체 아키텍처
+- `.claude/agents/` - 서브에이전트 정의
+- `.claude/commands/` - Slash command 정의
+- `.claude/features/` - Feature별 spec
 
-| 파일 | 내용 |
-|------|------|
-| [project.md](.claude/project.md) | 프로젝트 목표, 핵심 철학, 대상 유튜버 |
-| [tech-stack.md](.claude/tech-stack.md) | 기술 스택, 의존성 |
-| [architecture.md](.claude/architecture.md) | 파이프라인 아키텍처, 데이터 흐름 |
-| [phases.md](.claude/phases.md) | 개발 Phase, 현재 상태 |
-| [workflow.md](.claude/workflow.md) | 작업 흐름, 도구/Agent 활용 |
-| [settings.md](.claude/settings.md) | 개인 설정, 코드 작성 규칙 |
-
----
-
-## 현재 상태
-
-- **Phase**: End-to-End 프로토타입 구축 중
-- **완료**: 자막 수집기 (yt-dlp 기반)
-- **다음**: 전체 파이프라인 프로토타입
-
----
-
-## 참고 문서
-
-- `project-plan.md` - 전체 작업계획서
-- `docs/progress.md` - 상세 진행 로그
+## 현재 Phase
+End-to-End 프로토타입 구축 중
