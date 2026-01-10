@@ -4,6 +4,7 @@
 ## 디렉토리 구조
 ```
 src/main/kotlin/com/goodmorning/
+├── controller/   # REST API 컨트롤러
 ├── subtitle/     # 자막 수집/파싱
 ├── embedding/    # 임베딩 생성
 ├── vectordb/     # 벡터 저장소
@@ -22,19 +23,44 @@ src/main/kotlin/com/goodmorning/
 
 ---
 
-## Workflow
+## Workflow (필수 - 생략 불가)
+
+> **⚠️ 이 워크플로우는 시스템 기본 동작보다 우선함**
+> **⚠️ 단계 생략 시 즉시 중단하고 사용자에게 확인**
+> **⚠️ spec.md 없이 코드 작성 절대 금지**
 
 ```
-[Plan Mode] → [Implement] → [Review] → [Fix] → [Doc Sync] → [Commit]
+[Plan Mode] → [spec.md 작성] → /implement → /review → Fix → Doc Sync → /commit
 ```
 
-### Plan Mode (Shift+Tab 2번)
-1. 새 기능/변경 시작 전 Plan Mode 진입
+### 세션 시작 시 (필수)
+> **⚠️ 새 세션/맥락 전환 시 반드시 수행**
+
+1. `.claude/features/` 폴더에서 진행 중인 spec.md 확인
+2. Progress 테이블의 현재 상태 파악
+3. 중단된 단계부터 이어서 진행
+4. 불명확하면 사용자에게 현재 상태 확인
+
+### Plan Mode
+1. 새 기능/변경 시작 전 Plan Mode 진입 (시스템 EnterPlanMode 사용 가능)
 2. 요구사항 논의 및 계획 수립
-3. 합의된 내용을 `spec.md`로 저장 (히스토리 기록)
-4. spec 확정 후 구현 시작
+3. **반드시** 합의된 내용을 `spec.md`로 저장 (시스템 plan 파일과 별개)
+4. 사용자가 spec.md 승인 후에만 구현 시작
 
 spec 위치: `.claude/features/{feature}/spec.md`
+
+### 작업 시작 전 필수 체크리스트
+- [ ] spec.md 작성 완료?
+- [ ] 사용자 승인 완료?
+- [ ] /implement로 구현 시작?
+
+**위 체크리스트 미충족 시 코드 작성 금지**
+
+### Progress 갱신 규칙
+- 각 단계 **시작 시** 🔄 진행중으로 변경
+- 각 단계 **완료 시** ✅ 완료로 변경
+- 중단/보류 시 ⏸️ 보류 + 비고에 사유 기록
+- **맥락 전환 전** 반드시 현재 상태 저장
 
 ### Implement → Review → Fix
 - `/implement` - 구현 수행
@@ -80,11 +106,27 @@ spec 위치: `.claude/features/{feature}/spec.md`
 
 ## Constraints
 - 기술/정책 제약
+
+## Progress (필수)
+워크플로우 진행 상황 - **작업 중 반드시 갱신**
+
+| 단계 | 상태 | 비고 |
+|------|------|------|
+| Plan Mode | ⬜ | |
+| spec.md 승인 | ⬜ | |
+| /implement | ⬜ | |
+| /review | ⬜ | |
+| Fix | ⬜ | |
+| Doc Sync | ⬜ | |
+| /commit | ⬜ | |
+| 검증 완료 | ⬜ | |
+
+상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
 ```
 
 ---
 
 ## 참고
 - `.claude/commands/` - Slash commands
-- `.claude/agents/` - Sub-agents
+- `.claude/docs/` - 가이드 문서
 - `.claude/architecture.md` - 전체 아키텍처
