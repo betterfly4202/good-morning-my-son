@@ -15,7 +15,7 @@
 
 <body>
 
-Co-Authored-By: Claude <noreply@anthropic.com>
+Co-Authored-By: betterfly <betterfly4202@gmail.com>
 ```
 
 ### Type
