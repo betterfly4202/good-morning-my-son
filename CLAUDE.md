@@ -30,7 +30,7 @@ src/main/kotlin/com/goodmorning/
 > **⚠️ spec.md 없이 코드 작성 절대 금지**
 
 ```
-[Plan Mode] → [spec.md 작성] → /implement → /review → Fix → Doc Sync → /commit
+[Plan Mode] → [spec.md 작성] → /implement → /verify → /review → Fix → Doc Sync → /commit
 ```
 
 ### 세션 시작 시 (필수)
@@ -62,9 +62,10 @@ spec 위치: `.claude/features/{feature}/spec.md`
 - 중단/보류 시 ⏸️ 보류 + 비고에 사유 기록
 - **맥락 전환 전** 반드시 현재 상태 저장
 
-### Implement → Review → Fix
+### Implement → Verify → Review → Fix
 - `/implement` - 구현 수행
-- `/review` - 코드 리뷰 (수정 금지, 이슈만 보고)
+- `/verify` - Success Criteria 충족 검증 (동작 확인)
+- `/review` - 코드 품질 리뷰 (Constitution 준수, 수정 금지)
 - Fixer가 리뷰 결과 반영
 
 ### Doc Sync (필수)
@@ -115,11 +116,11 @@ spec 위치: `.claude/features/{feature}/spec.md`
 | Plan Mode | ⬜ | |
 | spec.md 승인 | ⬜ | |
 | /implement | ⬜ | |
+| /verify | ⬜ | |
 | /review | ⬜ | |
 | Fix | ⬜ | |
 | Doc Sync | ⬜ | |
 | /commit | ⬜ | |
-| 검증 완료 | ⬜ | |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
 ```
@@ -128,5 +129,6 @@ spec 위치: `.claude/features/{feature}/spec.md`
 
 ## 참고
 - `.claude/commands/` - Slash commands
-- `.claude/docs/` - 가이드 문서
+- `.claude/docs/code-constitution.md` - 코드 작성 원칙 (필수)
+- `.claude/docs/prompt-management-guide.md` - 프롬프트 관리 가이드
 - `.claude/architecture.md` - 전체 아키텍처

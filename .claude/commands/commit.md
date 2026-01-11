@@ -30,9 +30,11 @@ Co-Authored-By: betterfly <betterfly4202@gmail.com>
 - **푸시하지 않음** - 커밋만 생성
 - **secrets 제외** - .env 등 민감 파일 확인
 - **Task ID 포함** - 관련 task가 있으면 메시지에 포함
+- 맥락이 다른 파일은 커밋을 나누어서 진행해야함
+  - 이 부분이 모호할 경우 반드시 물어볼 것
 
 ## 사용 예시
 ```
 /commit
-/commit T-001 자막 파서 구현
+/commit feat: T-001 자막 파서 구현
 ```

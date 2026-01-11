@@ -61,10 +61,10 @@
 | Plan Mode | ✅ | 요구사항 논의 완료 |
 | spec.md 승인 | ✅ | Main.kt 삭제 포함 |
 | /implement | ✅ | 빌드 성공 |
+| /verify | ⬜ | bootRun, curl 테스트 필요 |
 | /review | ⬜ | |
 | Fix | ⬜ | |
 | Doc Sync | ⬜ | |
 | /commit | ⬜ | |
-| 검증 완료 | ⬜ | bootRun, curl 테스트 필요 |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
