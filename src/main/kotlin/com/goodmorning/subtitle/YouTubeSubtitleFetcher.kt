@@ -3,11 +3,13 @@ package com.goodmorning.subtitle
 import com.goodmorning.subtitle.model.SubtitleSegment
 import com.goodmorning.subtitle.model.VideoSubtitle
 import kotlinx.serialization.json.*
+import org.springframework.stereotype.Component
 import java.io.File
 import java.time.Instant
 import java.util.concurrent.TimeUnit
 import kotlin.io.path.createTempDirectory
 
+@Component
 class YouTubeSubtitleFetcher(
     private val channelName: String = "하정훈의 삐뽀삐뽀 119 소아과"
 ) {

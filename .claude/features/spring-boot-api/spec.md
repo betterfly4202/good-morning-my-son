@@ -60,11 +60,11 @@
 |------|------|------|
 | Plan Mode | ✅ | 요구사항 논의 완료 |
 | spec.md 승인 | ✅ | Main.kt 삭제 포함 |
-| /implement | ✅ | 빌드 성공 |
-| /verify | ⬜ | bootRun, curl 테스트 필요 |
-| /review | ⬜ | |
-| Fix | ⬜ | |
-| Doc Sync | ⬜ | |
-| /commit | ⬜ | |
+| /implement | ✅ | 빌드 성공, Constitution 준수 개선 |
+| /verify | ✅ | bootRun, 404 응답 확인 |
+| /review | ✅ | okhttp 제거 |
+| Fix | ✅ | okhttp 의존성 제거 완료 |
+| Doc Sync | ✅ | CLAUDE.md 디렉토리 구조 반영됨 |
+| /commit | 🔄 | 진행중 |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
