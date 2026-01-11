@@ -65,6 +65,6 @@
 | /review | ✅ | okhttp 제거 |
 | Fix | ✅ | okhttp 의존성 제거 완료 |
 | Doc Sync | ✅ | CLAUDE.md 디렉토리 구조 반영됨 |
-| /commit | 🔄 | 진행중 |
+| /commit | ✅ | 4a69056 |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
