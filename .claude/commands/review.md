@@ -28,11 +28,23 @@
    - 재리뷰
    - 2회 후에도 High 있으면 → 멈추고 보고
 
+## 코드 원칙
+`.claude/docs/code-constitution.md` 준수
+
+리뷰 시 체크:
+- [ ] 최소 단위로 구현되었는가? (Rule 5)
+- [ ] 상태를 최소화했는가? (Rule 11)
+- [ ] 불변 데이터, 파이프라인 설계인가? (Rule 12)
+- [ ] 단일 책임인가? (Rule 14)
+- [ ] 로깅/관찰 가능한가? (Rule 17)
+- [ ] FORBIDDEN DESIGNS 위반 없는가? (Rule 19)
+
 ## 평가 기준
 1. **요구사항 일치** - spec과 맞는지
 2. **정확성** - 버그, 엣지 케이스
 3. **유지보수성** - 가독성, 복잡도
 4. **테스트 커버리지** - 누락된 테스트
+5. **Constitution 준수** - 위 코드 원칙 체크리스트
 
 ## 규칙
 - **코드 수정 금지** - 이슈만 보고 (Fix 단계에서 수정)
@@ -46,6 +58,16 @@
 - Files reviewed: N
 - Issues found: N (High: N, Medium: N, Low: N)
 - Fix iteration: 1/2
+
+## Constitution Compliance
+| Rule | Check | Status |
+|------|-------|--------|
+| 5 | 최소 단위 | ✅/❌ |
+| 11 | 상태 최소화 | ✅/❌ |
+| 12 | 불변/파이프라인 | ✅/❌ |
+| 14 | 단일 책임 | ✅/❌ |
+| 17 | 관찰 가능성 | ✅/❌ |
+| 19 | FORBIDDEN | ✅/❌ |
 
 ## Blocking Issues (High)
 - [ ] 파일:라인 - 이슈 설명
@@ -61,7 +83,7 @@
 - [ ] spec과 다른 부분
 
 ## Verdict
-- [ ] PASS - High 이슈 없음
+- [ ] PASS - High 이슈 없음, Constitution 준수
 - [ ] PASS with notes - Medium/Low만 존재
 - [ ] FAIL - High 이슈 존재 → Fix 필요
 ```
