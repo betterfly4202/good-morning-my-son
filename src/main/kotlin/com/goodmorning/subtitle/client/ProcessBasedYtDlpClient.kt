@@ -36,10 +36,10 @@ class ProcessBasedYtDlpClient : YtDlpClient {
         logger.debug("yt-dlp exit code: {}", exitCode)
 
         return if (exitCode == 0) {
-            YtDlpResult(success = true, outputDir = outputDir)
+            YtDlpResult(success = true)
         } else {
             logger.warn("yt-dlp failed: {}", output)
-            YtDlpResult(success = false, outputDir = outputDir, message = output)
+            YtDlpResult(success = false, message = output)
         }
     }
 
