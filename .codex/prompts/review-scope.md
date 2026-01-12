@@ -174,6 +174,12 @@ This constitution is based on the philosophy of:
 
 ------------------------------------------------------------------------
 
+## LOGGING DEPENDENCY EXCEPTION
+
+- Logging dependencies (e.g., slf4j) are allowed in core code and must not be flagged as UB-1/UB-5 violations.
+
+------------------------------------------------------------------------
+
 ## FORBIDDEN DESIGNS
 
 - **FD-1**: The following are forbidden:
