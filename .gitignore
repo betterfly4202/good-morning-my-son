@@ -41,6 +41,9 @@ bin/
 ### Mac OS ###
 .DS_Store
 
+### claude ###
+.claude/stop.log
+
 ### Project ###
 # output/ - 자막 JSON 파일 형상관리
 # .claude/ - agent 및 프로젝트 설정 형상관리
