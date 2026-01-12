@@ -1,6 +1,7 @@
 package com.goodmorning.subtitle
 
 import com.goodmorning.subtitle.client.YtDlpClient
+import com.goodmorning.subtitle.filter.CompositeSubtitleFilter
 import com.goodmorning.subtitle.model.VideoSubtitle
 import com.goodmorning.subtitle.parser.SubtitleParser
 import org.slf4j.LoggerFactory
@@ -14,6 +15,7 @@ class SubtitleFetchPipeline(
     private val ytDlpClient: YtDlpClient,
     private val fileFinder: SubtitleFileFinder,
     private val parsers: List<SubtitleParser>,
+    private val subtitleFilter: CompositeSubtitleFilter,
     @Value("\${subtitle.channel-name:하정훈의 삐뽀삐뽀 119 소아과}")
     private val channelName: String
 ) {
@@ -48,17 +50,26 @@ class SubtitleFetchPipeline(
                 return null
             }
 
+            val filteredSegments = subtitleFilter.filterSegments(segments)
+            logger.info("Filtered {} segments from {} total for videoId: {}",
+                segments.size - filteredSegments.size, segments.size, videoId)
+
+            if (filteredSegments.isEmpty()) {
+                logger.warn("No segments remaining after filtering for videoId: {}", videoId)
+                return null
+            }
+
             val title = ytDlpClient.getVideoTitle(videoId) ?: "Unknown Title"
 
-            logger.info("Successfully fetched {} segments for videoId: {}", segments.size, videoId)
+            logger.info("Successfully fetched {} segments for videoId: {}", filteredSegments.size, videoId)
 
             return VideoSubtitle(
                 videoId = videoId,
                 title = title,
                 channelName = channelName,
                 collectedAt = Instant.now().toString(),
-                segments = segments,
-                fullText = segments.joinToString(" ") { it.text }
+                segments = filteredSegments,
+                fullText = filteredSegments.joinToString(" ") { it.text }
             )
         } finally {
             tempDir.deleteRecursively()
