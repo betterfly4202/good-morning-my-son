@@ -30,8 +30,17 @@ src/main/kotlin/com/goodmorning/
 > **⚠️ spec.md 없이 코드 작성 절대 금지**
 
 ```
-[Plan Mode] → [spec.md 작성] → /implement → /verify → /review → Fix → Doc Sync → /commit
+[Plan Mode] → [spec.md 작성] → implement-agent → verify-agent → review-agent → Fix → Doc Sync → commit-agent
 ```
+
+### Agents 참조
+각 워크플로우 단계는 `.claude/agents/`의 전문 에이전트가 수행:
+| 단계 | Agent | 역할 |
+|------|-------|------|
+| 구현 | `implement-agent` | spec 기반 구현, 빌드/테스트 루프 |
+| 검증 | `verify-agent` | Success Criteria 충족 검증 |
+| 리뷰 | `review-agent` | Constitution 준수, 코드 품질 체크 |
+| 커밋 | `commit-agent` | 커밋 메시지 생성, 맥락별 분리 |
 
 ### 세션 시작 시 (필수)
 > **⚠️ 새 세션/맥락 전환 시 반드시 수행**
@@ -52,7 +61,7 @@ spec 위치: `.claude/features/{feature}/spec.md`
 ### 작업 시작 전 필수 체크리스트
 - [ ] spec.md 작성 완료?
 - [ ] 사용자 승인 완료?
-- [ ] /implement로 구현 시작?
+- [ ] implement-agent로 구현 시작?
 
 **위 체크리스트 미충족 시 코드 작성 금지**
 
@@ -63,18 +72,18 @@ spec 위치: `.claude/features/{feature}/spec.md`
 - **맥락 전환 전** 반드시 현재 상태 저장
 
 ### Implement → Verify → Review → Fix
-- `/implement` - 구현 수행
-- `/verify` - Success Criteria 충족 검증 (동작 확인)
-- `/review` - 코드 품질 리뷰 (Constitution 준수, 수정 금지)
-- Fixer가 리뷰 결과 반영
+- `implement-agent` - spec 기반 구현 수행 (빌드/테스트 루프 포함)
+- `verify-agent` - Success Criteria 충족 검증 (객관적 Pass/Fail)
+- `review-agent` - 코드 품질 리뷰 (Constitution 준수, 수정 금지)
+- Fixer가 리뷰 결과 반영 (High 이슈 수정)
 
 ### Doc Sync (필수)
 - 변경사항이 기존 문서와 상충되면 → 반드시 리뷰 후 사용자 승인
 - 승인 없이 문서 수정/삭제 금지
 
 ### Commit
-- `/commit` - 변경사항 커밋
-- Task ID 포함, 푸시는 별도
+- `commit-agent` - 변경사항 커밋
+- Task ID 포함, 맥락별 커밋 분리, 푸시는 별도
 
 ---
 
@@ -115,12 +124,12 @@ spec 위치: `.claude/features/{feature}/spec.md`
 |------|------|------|
 | Plan Mode | ⬜ | |
 | spec.md 승인 | ⬜ | |
-| /implement | ⬜ | |
-| /verify | ⬜ | |
-| /review | ⬜ | |
+| implement-agent | ⬜ | |
+| verify-agent | ⬜ | |
+| review-agent | ⬜ | |
 | Fix | ⬜ | |
 | Doc Sync | ⬜ | |
-| /commit | ⬜ | |
+| commit-agent | ⬜ | |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
 ```
@@ -128,7 +137,9 @@ spec 위치: `.claude/features/{feature}/spec.md`
 ---
 
 ## 참고
-- `.claude/commands/` - Slash commands
+- `.claude/agents/` - 워크플로우 전문 에이전트 (implement, verify, review, commit)
+- `.claude/commands/` - 도메인 Slash commands (summarize)
+- `.claude/skills/` - 특화 스킬 (nested-test-architect)
 - `.claude/docs/code-constitution.md` - 코드 작성 원칙 (필수)
 - `.claude/docs/prompt-management-guide.md` - 프롬프트 관리 가이드
 - `.claude/architecture.md` - 전체 아키텍처

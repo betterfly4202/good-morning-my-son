@@ -122,26 +122,31 @@ GitHub 이슈 $ARGUMENTS 를 분석하고 수정해주세요.
 
 ---
 
-## Subagents 패턴
+## Agents 패턴
 
-### Boris가 사용하는 Subagents
-| Agent | 역할 |
-|-------|------|
-| `code-simplifier` | 작업 완료 후 코드 단순화 |
-| `verify-app` | 엔드-투-엔드 테스트 |
-| `build-validator` | 빌드 검증 |
-| `code-architect` | 아키텍처 설계 |
+### 워크플로우 전문 에이전트
+| Agent | 역할 | 위치 |
+|-------|------|------|
+| `implement-agent` | spec 기반 구현 | `.claude/agents/` |
+| `verify-agent` | Success Criteria 검증 | `.claude/agents/` |
+| `review-agent` | 코드 리뷰 및 Constitution 체크 | `.claude/agents/` |
+| `commit-agent` | 커밋 생성 | `.claude/agents/` |
 
-### 권장 구조
+### 디렉토리 구조
 ```
 .claude/
-└── commands/
-    ├── simplify.md      # code-simplifier 역할
-    ├── verify.md        # verify-app 역할
-    └── review.md        # reviewer 역할
+├── agents/            # 워크플로우 전문 에이전트
+│   ├── implement-agent.md
+│   ├── verify-agent.md
+│   ├── review-agent.md
+│   └── commit-agent.md
+├── commands/          # 도메인 슬래시 커맨드
+│   └── summarize.md
+└── skills/            # 특화 스킬
+    └── nested-test-architect/
 ```
 
-> **참고**: Boris 패턴에서 "agents"는 별도 디렉토리가 아닌 **commands 내에서 역할을 정의**하는 방식입니다.
+> **참고**: agents는 워크플로우 역할 (구현, 검증, 리뷰, 커밋), commands는 도메인 기능, skills는 특화 전문가로 분리합니다.
 
 ---
 
