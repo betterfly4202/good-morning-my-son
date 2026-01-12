@@ -140,6 +140,6 @@ curl http://localhost:8080/api/subtitles/{video-id}
 | /review | ✅ 완료 | PASS with notes (Medium 2개, Non-blocking) |
 | Fix | ✅ 완료 | High 이슈 없어 수정 불필요 |
 | Doc Sync | ✅ 완료 | architecture.md 변경 불필요, 테스트 @Nested 구조 리팩토링 |
-| /commit | ⬜ 대기 | |
+| /commit | ✅ 완료 | 634d71d |
 
 상태: ⬜ 대기 / 🔄 진행중 / ✅ 완료 / ⏸️ 보류
