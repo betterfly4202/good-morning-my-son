@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(.claude/features/**/*)",
+      "Write(.claude/features/**/*)"
+    ]
+  }
+}

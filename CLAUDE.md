@@ -34,14 +34,17 @@ src/main/kotlin/com/goodmorning/
 ```
 
 ### 워크플로우 시작: /task 커맨드
-새 작업 시작 시 `/task` 커맨드 사용:
+> **⚠️ 새 작업은 반드시 /task로 시작 (브랜치 생성 필수)**
+
 ```
 /task [ISSUE-ID] 작업 제목
 ```
 - 구조화된 질문으로 요구사항 수집
-- `feature/{issue-id}` 브랜치 자동 생성
+- `feature/{issue-id}` 브랜치 자동 생성 (**필수, 생략 불가**)
 - `.claude/features/{issue-id}/spec.md` 자동 생성
 - 상세: `.claude/commands/task.md`
+
+**금지**: master 브랜치에서 직접 작업
 
 ### Agents 참조
 각 워크플로우 단계는 `.claude/agents/`의 전문 에이전트가 수행:
