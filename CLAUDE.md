@@ -30,8 +30,18 @@ src/main/kotlin/com/goodmorning/
 > **⚠️ spec.md 없이 코드 작성 절대 금지**
 
 ```
-[Plan Mode] → [spec.md 작성] → implement-agent → verify-agent → review-agent → Fix → Doc Sync → commit-agent
+/task → [spec.md 승인] → implement-agent → verify-agent → review-agent → Fix → Doc Sync → commit-agent
 ```
+
+### 워크플로우 시작: /task 커맨드
+새 작업 시작 시 `/task` 커맨드 사용:
+```
+/task [ISSUE-ID] 작업 제목
+```
+- 구조화된 질문으로 요구사항 수집
+- `feature/{issue-id}` 브랜치 자동 생성
+- `.claude/features/{issue-id}/spec.md` 자동 생성
+- 상세: `.claude/commands/task.md`
 
 ### Agents 참조
 각 워크플로우 단계는 `.claude/agents/`의 전문 에이전트가 수행:
@@ -51,6 +61,9 @@ src/main/kotlin/com/goodmorning/
 4. 불명확하면 사용자에게 현재 상태 확인
 
 ### Plan Mode
+> **권장: `/task` 커맨드로 워크플로우 시작** (자동으로 branch, spec.md 생성)
+
+수동 진행 시:
 1. 새 기능/변경 시작 전 Plan Mode 진입 (시스템 EnterPlanMode 사용 가능)
 2. 요구사항 논의 및 계획 수립
 3. **반드시** 합의된 내용을 `spec.md`로 저장 (시스템 plan 파일과 별개)
@@ -138,7 +151,7 @@ spec 위치: `.claude/features/{feature}/spec.md`
 
 ## 참고
 - `.claude/agents/` - 워크플로우 전문 에이전트 (implement, verify, review, commit)
-- `.claude/commands/` - 도메인 Slash commands (summarize)
+- `.claude/commands/` - Slash commands (task, summarize)
 - `.claude/skills/` - 특화 스킬 (nested-test-architect)
 - `.claude/docs/code-constitution.md` - 코드 작성 원칙 (필수)
 - `.claude/docs/prompt-management-guide.md` - 프롬프트 관리 가이드
